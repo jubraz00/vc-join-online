@@ -8,10 +8,6 @@ from keep_alive import keep_alive
 
 status = "online" #online/dnd/idle
 
-GUILD_ID = os.getenv("GUILD_ID")
-CHANNEL_ID = os.getenv("CHANNEL_ID")
-SELF_MUTE = os.getenv("SELF_MUTE")
-SELF_DEAF = os.getenv("SELF_DEAF")
 
 usertoken = os.getenv("token")
 if not usertoken:
@@ -25,10 +21,7 @@ if validate.status_code != 200:
   print("[ERROR] Your token might be invalid. Please check it again.")
   sys.exit()
 
-userinfo = requests.get('https://canary.discordapp.com/api/v9/users/@me', headers=headers).json()
-username = userinfo["username"]
-discriminator = userinfo["discriminator"]
-userid = userinfo["id"]
+
 
 def joiner(token, status):
     ws = websocket.WebSocket()
